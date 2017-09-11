@@ -1,29 +1,19 @@
 package com.springboot.app.persistence.mappers;
 
-import com.springboot.app.persistence.models.ItemsModel;
+
+import com.springboot.app.persistence.models.*;
+
 import java.util.List;
-
-
-public interface ItemsMapper
-{
-
-  /**
-   * OBTIENE TODOS LOS ITEMS ALMACENADOS.
-   *
-   * @param obj Objeto tipo ItemsModel.
-   *
-   * @return Lista de objetos tipo ItemsModel.
-   */
-  public List<ItemsModel> getItemsMapper(ItemsModel obj) throws Exception;
-
-
-  /**
-   * OBTIENE TODOS LOS ITEMS ALMACENADOS BASADOS EN UN CRITERIO DE BUSQUEDA.
-   *
-   * @param obj Objeto tipo ItemsModel.
-   *
-   * @return Lista de objetos tipo ItemsModel.
-   */
-  public List<ItemsModel> searchItemsMapper(ItemsModel obj) throws Exception;
-
+/**
+ * Interfaz mapper de ItemModel, recibe una cadena de objetos.
+ * @author Lenovo
+ */
+public interface ItemsMapper {
+    
+    public List<ItemModel> itemMapper(ItemModel obj) throws Exception;
+    
+    public List<ItemModel> allItemsMapper(ItemModel obj) throws Exception;
+    
+     public List<ItemModel> itemNumMapper(ItemModel obj) throws Exception;
+    
 }

@@ -1,17 +1,26 @@
 package com.springboot.app.persistence.mappers;
 
-
-import com.springboot.app.persistence.models.TestModel;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.sql.DatabaseMetaData;
+import com.springboot.app.persistence.models.ItemModel;
+import com.springboot.app.persistence.models.TestModel;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import javax.sql.DataSource;
+
 
 
 @Repository
@@ -25,81 +34,80 @@ public class TestMapperImpl implements TestMapper
   @Override
   public List<TestModel> testMapper(TestModel obj) throws Exception
   {
+	  System.out.println("\n\rPARAMETRO RECIBIDO: " + obj.getTable());
 
-    System.out.println("\n\rPARAMETRO RECIBIDO: " + obj.getTable());
+	    List<TestModel> x = new ArrayList<>();
+	    DatabaseMetaData data = this.DataBBDD();
+	    ResultSet rsTables = this.tablesBBDD(data);
 
-    List<TestModel> x = new ArrayList<>();
-    DatabaseMetaData data = this.DataBBDD();
-    ResultSet rsTables = this.tablesBBDD(data);
+	    while (rsTables.next())
+	    {
+	      TestModel tableModel = new TestModel();
+	      String table = rsTables.getString("TABLE_NAME");
 
-    while (rsTables.next())
-    {
-      TestModel tableModel = new TestModel();
-      String table = rsTables.getString("TABLE_NAME");
+	      tableModel.setTable(table.toUpperCase());
 
-      tableModel.setTable(table.toUpperCase());
+	      System.out.printf("___%-12s", tableModel.getTable());
 
-      System.out.printf("___%-12s", tableModel.getTable());
+	      ResultSet rsColumns = this.columsBBDD(data, table);
 
-      ResultSet rsColumns = this.columsBBDD(data, table);
+	      while (rsColumns.next())
+	      {
+	        System.out.print(" | " + rsColumns.getString("COLUMN_NAME"));
+	      }
 
-      while (rsColumns.next())
-      {
-        System.out.print(" | " + rsColumns.getString("COLUMN_NAME"));
-      }
+	      System.out.println("\n\r");
 
-      System.out.println("\n\r");
+	      x.add(tableModel);
+	    }
 
-      x.add(tableModel);
-    }
-
-    return x;
-  }
-
-
-  /**
-   * CONEXION BBDD.
-   *
-   * @return Conexion de la BBDD para recorrer las tablas y columnas.
-   */
-  private DatabaseMetaData DataBBDD() throws SQLException
-  {
-    DataSource src = JdbcTemplate.getDataSource();
-    Connection conx = src.getConnection();
-    return conx.getMetaData();
-  }
+	    return x;
+	  }
 
 
-  /**
-   * LECTURA DE LAS TABLAS DE LA BASE DE DATOS.
-   *
-   * @param data Conexion de la BBDD.
-   *
-   * @return Tablas de la BBDD.
-   */
-  private ResultSet tablesBBDD(DatabaseMetaData data) throws SQLException
-  {
-    String[] table = new String[]
-    {
-      "TABLE"
-    };
-
-    return data.getTables(null, null, null, table);
-  }
+	  /**
+	   * CONEXION BBDD.
+	   *
+	   * @return Conexion de la BBDD para recorrer las tablas y columnas.
+	   */
+	  private DatabaseMetaData DataBBDD() throws SQLException
+	  {
+	    DataSource src = JdbcTemplate.getDataSource();
+	    Connection conx = src.getConnection();
+	    return conx.getMetaData();
+	    
+	  }
 
 
-  /**
-   * LECTURA DE LAS COLUMNAS DE UNA TABLA.
-   *
-   * @param data  Conexion de la BBDD.
-   * @param table Tabla a procesar.
-   *
-   * @return Columnas obtenidas.
-   */
-  private ResultSet columsBBDD(DatabaseMetaData data, String table) throws SQLException
-  {
-    return data.getColumns(null, null, table, null);
-  }
+	  /**
+	   * LECTURA DE LAS TABLAS DE LA BASE DE DATOS.
+	   *
+	   * @param data Conexion de la BBDD.
+	   *
+	   * @return Tablas de la BBDD.
+	   */
+	  private ResultSet tablesBBDD(DatabaseMetaData data) throws SQLException
+	  {
+	    String[] table = new String[]
+	    {
+	      "TABLE"
+	    };
 
+	    return data.getTables(null, null, null, table);
+	  }
+
+
+	  /**
+	   * LECTURA DE LAS COLUMNAS DE UNA TABLA.
+	   *
+	   * @param data  Conexion de la BBDD.
+	   * @param table Tabla a procesar.
+	   *
+	   * @return Columnas obtenidas.
+	   */
+	  private ResultSet columsBBDD(DatabaseMetaData data, String table) throws SQLException
+	  {
+	    return data.getColumns(null, null, table, null);
+	  }
 
 }

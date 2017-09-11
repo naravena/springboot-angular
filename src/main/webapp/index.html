@@ -1,53 +1,41 @@
 <!DOCTYPE html>
 <html lang="es" ng-app="app">
-  <head>
-    <meta charset="utf-8" />
-    <title>Spring Boot and Angular JS</title>
+    <head>
+        <meta charset="utf-8" />
+        <title>Paginica</title>
 
-    <link type="text/css" rel="stylesheet"  href="/css/normalizer.css"/>
-    <link type="text/css" rel="stylesheet"  href="/ng-css/ini.css"/>
-    <link type="text/css" rel="stylesheet"  href="/ng-css/about.css"/>
-    <link type="text/css" rel="stylesheet"  href="/ng-css/testBbdd.css"/>
-    <link type="text/css" rel="stylesheet"  href="/ng-css/kirby.css"/>
-    <link type="text/css" rel="stylesheet"  href="/ng-css/search.css"/>
+        <link type="text/css" rel="stylesheet"  href="/ng-css/normalizer.css"/>
+        <script type="text/javascript" src="/js/lib/ngAngular.min.js"></script>
+        <script type="text/javascript" src='/js/lib/ngAngularRoute.min.js'></script>
+         <script type="text/javascript" src='/js/lib/ngSanitize.min.js'></script>
+        <script type="text/javascript" src='/js/ng-const/ng-const.js'></script>
+        <script type="text/javascript" src="/js/ng-module/ng-module-app.js"></script>
+         <script type="text/javascript" src="/js/ng-directive/ng-directive-app.js"></script>
+         <script type="text/javascript" src="/js/ng-factory/ng-factory-app.js"></script>
+        
+    </head>
+    <body apploading ng-controller="ng-app-controller-template-index"> 
 
-    <script type="text/javascript" src="/js/lib/ngAngular.min.js"></script>
-    <script type="text/javascript" src='/js/lib/ngAngularRoute.min.js'></script>
-    <script type="text/javascript" src='/js/lib/ngSanitize.min.js'></script>
-    <script type="text/javascript" src='/js/ng-const/ngConst.js'></script>
-    <script type="text/javascript" src="/js/ng-module/ngModuleApp.js"></script>
-    <script type="text/javascript" src="/js/ng-factory/ngFactoryApp.js"></script>
-    <script type="text/javascript" src="/js/ng-directive/ngDirectiveApp.js"></script>
-  </head>
-  <body apploading  ng-controller="ngAppControllerIndex">
-    <header id="header">
-      <nav>
-        <ul>
-          <li>
-            <a href="#!/">Inicio</a>
-          </li>
-          <li>
-            <a href="#!/test-bbdd">Test BBDD</a>
-          </li> 
-          <li>
-            <a href="#!/kirby">Kirby CSS</a>
-          </li>
-          <li>
-            <a href="#!/search">Buscador</a>
-          </li> 
-        </ul>
-      </nav>
-    </header>
-    <div id="wrapper"> 
-      <div ng-view></div>
-    </div>
-    <footer id="footer">
-      <a href="#!/about"></a>
-    </footer>
+        <div id="menu" class="menuSide">
+            <ul id="menuUl">
+                <li class="menuText">Menu</li>
+                <li><a href="#!/home">Home</a></li>
+                <li><a href="#!/bbdd">BBDD</a></li>
+                <li><a href="#!/buscar">Buscar</a></li>
+            </ul>
+        </div>
 
-    <script type="text/javascript" src="/ng-controller/ngAppControllerIndex.js"></script>
-    <script type="text/javascript" src="/ng-controller/ngAppControllerAbout.js"></script>
-    <script type="text/javascript" src="/ng-controller/ngAppControllerTestBbdd.js"></script>
-    <script type="text/javascript" src="/ng-controller/ngAppControllerSearch.js"></script>
-  </body>
+        <a href="#!/ayuda" class="ayudaIcon" id="ayudaIconPos">?</a>
+
+        <div ng-view></div>
+
+        <script type="text/javascript" src="/ng-controller/ng-app-controller-template-index.js"></script>
+        <script type="text/javascript" src="/ng-controller/ng-app-controller-bbdd.js"></script>  
+        <script type="text/javascript" src="/ng-controller/ng-app-controller-ayuda.js"></script>
+        <script type="text/javascript" src="/ng-controller/ng-app-controller-buscar.js"></script>
+        <script type="text/javascript" src="/ng-controller/ng-app-controller-template1.js"></script>
+        <script type="text/javascript" src="/ng-controller/ng-app-controller-template2.js"></script>
+        <script type="text/javascript" src="/ng-controller/ng-app-controller-template3.js"></script>
+    </body>
+
 </html>
