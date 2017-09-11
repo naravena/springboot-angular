@@ -22,5 +22,15 @@ public interface ItemsService {
   
     public List<ItemModel> itemNum (ItemModel obj) throws Exception;
     
+    /**
+     * Funcion que añade un item a la tabla
+     * @param obj
+     * @return
+     * @throws Exception
+     */
+    public List<ItemModel> addItem (ItemModel obj) throws Exception;
+    
+    
+    
     
 }

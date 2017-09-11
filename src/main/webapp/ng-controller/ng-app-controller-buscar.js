@@ -5,11 +5,6 @@ app.controller('ng-app-controller-buscar', ['$scope', '$http', '$timeout', 'serv
         var id = document.querySelector('#cuenta');
         var contador = 0;
 
-
-
-
-
-
         /**Function autoinvocada nada mas iniciar la página 
          * que devuelve el contenido de la tabla Items.
          * @returns {tabla con contenido}
@@ -25,7 +20,41 @@ app.controller('ng-app-controller-buscar', ['$scope', '$http', '$timeout', 'serv
 //                console.log(i);
 //                // console.log(json[i]);
 //            }
-
+        	
+        	/*Funcion de pruebas JDBC template*/
+//        	$scope.pruebaItem = function(){
+//        		   $http.post('/addItems',
+//        				   {
+//
+//                           })
+//                           .then(function (response) {
+//                               var datos = (response.data);
+//                               $scope.tabla = datos;
+//        	}
+//        	
+        	
+        	
+        	
+        	/*Funcion que recoge la ID de una articulo de la tabla de busqueda*/
+        	$scope.modItem = function(e){
+        		var datoBuscador = e.target.value;
+        		$scope.datoBuscador = datoBuscador;
+          		
+        		
+        	}
+        	
+        	/*Funcion que añade un item a la tabla*/
+        	$scope.addItem = function(){
+        		
+        	}
+        	
+        	/*Funcion que elimina un item de la tabla*/
+        	$scope.delItem = function(e){
+        		var datoBuscador = e.target.value;
+        		//crear servicio que elimine datoBuscador
+        		
+        	}
+        	
 
             $http.post('/allItems',
                     {
@@ -47,8 +76,6 @@ app.controller('ng-app-controller-buscar', ['$scope', '$http', '$timeout', 'serv
                                $scope.campos = campos;
                             }
                         }
-
-
                     });
 
         })();

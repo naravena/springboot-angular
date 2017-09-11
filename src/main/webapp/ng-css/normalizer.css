@@ -55,7 +55,10 @@ body.appLoading::before
     background-size: auto 80px;
 }
 
-
+/*-------------------------------------------------------------
+MENUSIDE
+*--------------------------------------------------------------
+*/
 
 .menuSide {
     font-size: 20px;
@@ -214,6 +217,86 @@ BOTON
     cursor: pointer;
 }
 
+/*-------------------------------------------------------------
+BOTON ICONOS
+*--------------------------------------------------------------
+*/
+
+
+
+.btnIcon-add{
+    background-color:  #0099cc;
+    border: solid 1px white;
+    color: white;
+    width: 35px;
+    height: 35px;
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 100%;
+    margin: 2px;
+
+}
+
+.btnIcon-add:hover {
+    background-color: white;
+    color:  #0099cc;
+    border:  #0099cc solid 1px;
+    cursor: pointer;
+}
+
+.btnIcon-Mod{
+	   width: 35px;
+    height: 35px;
+    font-size: 30px;
+    background-color: #4CAF50;
+    border: solid 1px white;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+      border-radius: 100%;
+    margin: 2px;
+
+}
+
+.btnIcon-Mod:hover {
+    background-color: white;
+    color: #4CAF50;
+    border: #4CAF50 solid 1px;
+    cursor: pointer;
+}
+
+
+.btnIcon-del{
+	width: 35px;
+    height: 35px;
+    font-size: 30px;
+    background-color:  #cc0000;
+    border: solid 1px white;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 100%;
+    margin: 2px;
+
+}
+
+.btnIcon-del:hover {
+    background-color: white;
+    color:  #cc0000;
+    border:  #cc0000 solid 1px;
+    cursor: pointer;
+}
+
+/*-------------------------------------------------------------
+TABLA
+*--------------------------------------------------------------
+*/
+
 .tabla{
     border-collapse: collapse;
     width: 80%;
@@ -340,13 +423,10 @@ BOTON
 }
 
 
-
-
-
-
-
-
-
+/*-------------------------------------------------------------
+BUSCADOR
+*--------------------------------------------------------------
+*/
 
 .buscador:before{
     position: absolute;
@@ -663,6 +743,16 @@ CONTENEDOR ICONS
     left: 40%;
     width: 350px;
     height: 50px;   
+}
+
+/*
+------------------------------------------------------------------
+CONTENEDOR BTN
+------------------------------------------------------------------
+*/
+
+.containerBtn{
+
 }
 
 

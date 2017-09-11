@@ -15,5 +15,7 @@ public interface ItemsMapper {
     public List<ItemModel> allItemsMapper(ItemModel obj) throws Exception;
     
      public List<ItemModel> itemNumMapper(ItemModel obj) throws Exception;
-    
+     
+     public List<ItemModel> addItemMapper (ItemModel obj) throws Exception;
+     
 }

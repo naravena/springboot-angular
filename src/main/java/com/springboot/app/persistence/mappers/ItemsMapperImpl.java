@@ -86,6 +86,19 @@ public class ItemsMapperImpl implements ItemsMapper {
 
           return JdbcTemplate.query(sql, new BeanPropertyRowMapper(ItemModel.class));
     }
+
+	@Override
+	public List<ItemModel> addItemMapper(ItemModel obj) throws Exception {
+		
+
+		  String sql = "UPDATE items" +
+				  		"SET nombre = 'prueba'" +
+				  		"WHERE id = 1";
+
+	        System.out.println("Datos del datobuscador: " + obj.getDatoBuscador());
+	 
+	   return JdbcTemplate.query(sql, new BeanPropertyRowMapper(ItemModel.class));
+	}
 }
 
 

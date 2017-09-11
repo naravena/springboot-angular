@@ -83,6 +83,12 @@ public class ItemsServiceImpl implements ItemsService{
     return x;
     }
 
+	@Override
+	public List<ItemModel> addItem(ItemModel obj) throws Exception {
+		List<ItemModel> x = itemMapper.addItemMapper(obj);
+		return x;
+	}
+
 
    
 }

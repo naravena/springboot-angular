@@ -66,5 +66,20 @@ public class ItemController {
     }
     
     
+        @ResponseBody
+        @RequestMapping(value = "/addItems",
+                method = RequestMethod.POST,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+        public List<ItemModel> addItem(@RequestBody ItemModel obj) throws Exception {
+ 
+            List<ItemModel> x = itemService.addItem(obj);
+         
+            return x;
+        }
+            
+        
+        
+        
+        
     
 }

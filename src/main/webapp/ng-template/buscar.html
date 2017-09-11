@@ -1,18 +1,29 @@
 
 
 <div class="index">
-    <div class="panel"><div class="panelBText">Buscador</div></div>
-    <div class="box">
-        <div class="container-1">
-            <input type="text" id="search" class="box container-1" ng-keyup="buscar($event)" placeholder="Buscar..." > 
-        </div>
-        <div  id="cuenta">
-            Datos recibidos : {{busquedas}} <br>
-            Contador de busquedas: {{contador}}
-Tipo {{tipo}}
-        </div>
-
-    </div>
+	<div class="panel">
+		<div class="panelBText">Buscador</div>
+	</div>
+	<div class="box">
+		<div class="container-1">
+			<input type="text" id="search" class="box container-1"
+				ng-keyup="buscar($event)" placeholder="Buscar...">
+				
+<!-- 			<form method="POST"> -->
+<!-- 				<div id="addItem"> -->
+<!-- 					Add Item:<br> -->
+<!-- 					<input type="text" name="addItem[]"  -->
+<!-- 					placeholder="articulo"> -->
+<!-- 					<button class="btn" onClick="addInput('addItem');">Subir</button> -->
+<!-- 				</div> -->
+				
+<!-- 			</form> -->
+		</div>
+		<div id="cuenta">
+			Datos recibidos : {{busquedas}} <br> Contador de busquedas:
+			{{contador}} Tipo {{tipo}}
+		</div>
+	</div>
 </div>
 
 
@@ -26,25 +37,37 @@ Tipo {{tipo}}
 
 </fieldset>-->
 
+
+
 <div id="tablaBbdd">
-    <div id="tablaBbddCabecera" >
-        <h1>Items</h1>
-    </div>
+	<div id="tablaBbddCabecera">
+		<h1>Items</h1>
+	</div>
 
-    <table id="tablaBbddContenido">
-     <tr>
-        <th>Nombre</th>
-           <th>Descripcion</th>
-              <th>Url</th>
-    </tr>
-  
-<tr ng-repeat="x in tabla">
-    <td ng-bind-html="x.nombre"></td>
-    <td ng-bind-html="x.descripcion"></td>
-    <td style="background-image: url('{{x.url}}')"></td>
-        </tr>
-    </table>
+	<table id="tablaBbddContenido">
+		<tr>
+			<th></th>
+			<th>Nombre</th>
+			<th>Descripcion</th>
+			<th>Url</th>
+		</tr>
 
+		<tr ng-repeat="x in tabla">
+	
+			<td class="containerBtn">
+			
+			<button class="btnIcon-add" value="{{x.id}}" ng-click="addItem($event)" id="btnAdd" >A</button>
+			<button class="btnIcon-Mod" value="{{x.id}}" ng-click="modItem($event)" id="btnMod">M</button>
+			<button class="btnIcon-del" value="{{x.id}}" ng-click="delItem($event)" id="btnDel">D</button>
+			
+			<button class="btn" value="{{x.id}}" ng-click="pruebaItem($event)" id="btnP" >Prueba</button>
+			
+			</td>
+			<td ng-bind-html="x.nombre"></td>
+			<td ng-bind-html="x.descripcion"></td>
+			<td style="background-image: url('{{x.url}}')"></td>
+		</tr>
+	</table>
 </div>
 
 
