@@ -1,0 +1,66 @@
+
+<!--    <table class="tabla">
+        <tr ng-repeat="x in datos">
+            <th><button class="btn" ng-click="bbdd()">BBDD</button></th>
+            <th>{{mensaje}}</th>
+    </tr>
+    </table>
+-->
+
+<!--
+<div id="tablaBbdd">
+    <div id="tablaBbddCabecera" ng-repeat="x in datos">
+        <h1>{{x.table}}</h1>
+    </div>
+    
+    <table id="tablaBbddContenido">
+        <tr>
+            <th>nombre</th>
+            <th>descripcion</th>
+            <th>url</th>
+        </tr>
+        <tr ng-repeat="x in tabla">
+            <td>{{x.nombre}}</td>
+            <td>{{x.descripcion}}</td>
+            <td>{{x.url}}</td>
+        </tr>
+    </table>
+
+</div>-->
+
+
+
+<!--<table class="tabla">
+    <tr>
+        <th><button class="btn" ng-click="bbdd()">BBDD</button> </th>
+    </tr>
+    <tr ng-repeat="x in datos">
+        <td>{{x.table| uppercase}}</td>
+
+    </tr>
+</table>-->
+
+
+<div id="tablaBbdd">
+    
+    <div id="tablaBbddCabecera" ng-repeat="x in datos">
+     <h1>{{x.table}}</h1>
+ </div>
+    
+<!--    <table id="tablaBbddContenido">
+        <tr>
+            <th>nombre</th>
+            <th>descripcion</th>
+            <th>url</th>
+        </tr>
+        <tr>
+            <td>contenido nombre</td>
+            <td>contenido descripcion</td>
+            <td>contenido url</td>
+        </tr>
+    </table>-->
+</div>
+
+<div class="centrar">
+  <button class="btn" ng-click="bbdd()" ng-show="!mostrar">Hazme click!</button>
+</div>

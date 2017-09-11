@@ -1,0 +1,87 @@
+
+
+<div class="index">
+    <div class="panel"><div class="panelBText">Buscador</div></div>
+    <div class="box">
+        <div class="container-1">
+            <input type="text" id="search" class="box container-1" ng-keyup="buscar($event)" placeholder="Buscar..." > 
+        </div>
+        <div  id="cuenta">
+            Datos recibidos : {{busquedas}} <br>
+            Contador de busquedas: {{contador}}
+Tipo {{tipo}}
+        </div>
+
+    </div>
+</div>
+
+
+<!--<fieldset class="buscador">
+
+    <input type="text" ng-keyup="buscar($event)" placeholder="Buscar..." name="busca"> 
+    <div class="contador" id="cuenta">
+        {{numero}}
+
+    </div>
+
+</fieldset>-->
+
+<div id="tablaBbdd">
+    <div id="tablaBbddCabecera" >
+        <h1>Items</h1>
+    </div>
+
+    <table id="tablaBbddContenido">
+     <tr>
+        <th>Nombre</th>
+           <th>Descripcion</th>
+              <th>Url</th>
+    </tr>
+  
+<tr ng-repeat="x in tabla">
+    <td ng-bind-html="x.nombre"></td>
+    <td ng-bind-html="x.descripcion"></td>
+    <td style="background-image: url('{{x.url}}')"></td>
+        </tr>
+    </table>
+
+</div>
+
+
+<!--<table>
+    
+     <tr>
+        <th ng-repeat="(key, val) in tabla[0]">{{key}}</th>
+    </tr>
+     
+   <tr ng-repeat="i in tabla">
+        <td ng-repeat="(key, val) in i">{{val}}</td>
+    </tr>
+    
+    
+    
+</table>-->
+
+
+
+
+
+
+<!--<table class="tabla">
+
+    <tr>
+        <th>Nombre del producto</th>  
+        <th>Descripcion</th>  
+        <th>Imagen</th> 
+    </tr>     
+    <tr ng-repeat="x in tabla">
+        <td>{{x.nombre}}</td>
+        <td>{{x.descripcion}}</td>
+        <td>{{x.url}}</td>
+
+    </tr>
+</table>-->
+
+
+
+
