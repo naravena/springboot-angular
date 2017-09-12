@@ -9,7 +9,30 @@ app.controller('ng-app-controller-buscar', ['$scope', '$http', '$timeout', 'serv
          * que devuelve el contenido de la tabla Items.
          * @returns {tabla con contenido}
          */
-        (function () {
+        (function () {       	
+        	   $http.post('/allItems',
+                       {
+
+                       })
+                       .then(function (response) {
+                           var campos = [];
+                           var datos = (response.data);
+                           $scope.tabla = datos;
+                           $scope.numero = datos.length;
+
+                           for (var i = 0, max = 1; i < max; i++) {
+                        console.log(datos[i]);
+                          
+                               for (var item in datos[i]){
+                                
+                                 campos = item;
+                                  console.log(campos);
+                                  $scope.campos = campos;
+                               }
+                           }
+                       });
+        			})();
+
 
 //            var json = {
 //                nombre: 'pp',
@@ -22,7 +45,8 @@ app.controller('ng-app-controller-buscar', ['$scope', '$http', '$timeout', 'serv
 //            }
         	
         	/*Funcion de pruebas JDBC template*/
-//        	$scope.pruebaItem = function(){
+        
+//        	$scope.addItems = function(){
 //        		   $http.post('/addItems',
 //        				   {
 //
@@ -31,7 +55,7 @@ app.controller('ng-app-controller-buscar', ['$scope', '$http', '$timeout', 'serv
 //                               var datos = (response.data);
 //                               $scope.tabla = datos;
 //        	}
-//        	
+        	
         	
         	
         	
@@ -56,29 +80,7 @@ app.controller('ng-app-controller-buscar', ['$scope', '$http', '$timeout', 'serv
         	}
         	
 
-            $http.post('/allItems',
-                    {
-
-                    })
-                    .then(function (response) {
-                        var campos = [];
-                        var datos = (response.data);
-                        $scope.tabla = datos;
-                        $scope.numero = datos.length;
-
-                        for (var i = 0, max = 1; i < max; i++) {
-                     console.log(datos[i]);
-                       
-                            for (var item in datos[i]){
-                             
-                              campos = item;
-                               console.log(campos);
-                               $scope.campos = campos;
-                            }
-                        }
-                    });
-
-        })();
+         
 
         var timer = null;
         /**Funcion de buscador, recoge una cadena escrita por teclado y

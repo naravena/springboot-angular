@@ -1,5 +1,5 @@
 package com.springboot.app.persistence.models;
-public class ItemModel {
+public class ItemsModel {
     //Atributos
     private int id;
     private String nombre;

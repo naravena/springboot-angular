@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.DatabaseMetaData;
-import com.springboot.app.persistence.models.ItemModel;
+import com.springboot.app.persistence.models.ItemsModel;
 import com.springboot.app.persistence.models.TestModel;
 
 import java.sql.Connection;

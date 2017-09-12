@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.springboot.app.persistence.mappers.ItemsMapper;
 import com.springboot.app.persistence.mappers.TestMapper;
-import com.springboot.app.persistence.models.ItemModel;
+import com.springboot.app.persistence.models.ItemsModel;
 import com.springboot.app.persistence.models.TestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

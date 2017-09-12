@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.springboot.app.persistence.models.ItemModel;
+import com.springboot.app.persistence.models.ItemsModel;
 import com.springboot.app.persistence.models.TestModel;
 import com.springboot.app.services.*;
 

@@ -230,7 +230,7 @@ BOTON ICONOS
     color: white;
     width: 35px;
     height: 35px;
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -249,7 +249,7 @@ BOTON ICONOS
 .btnIcon-Mod{
 	   width: 35px;
     height: 35px;
-    font-size: 30px;
+    font-size: 28px;
     background-color: #4CAF50;
     border: solid 1px white;
     color: white;
@@ -273,7 +273,7 @@ BOTON ICONOS
 .btnIcon-del{
 	width: 35px;
     height: 35px;
-    font-size: 30px;
+    font-size: 28px;
     background-color:  #cc0000;
     border: solid 1px white;
     color: white;

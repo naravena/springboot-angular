@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.springboot.app.persistence.models.ItemModel;
+import com.springboot.app.persistence.models.ItemsModel;
 import com.springboot.app.services.ItemsService;
 
 @Controller
@@ -20,16 +20,16 @@ public class ItemController {
     ItemsService itemService;
 
     
-       int cont= 0;  
+     int cont= 0;  
 
     
     @ResponseBody
     @RequestMapping(value = "/item",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ItemModel> item(@RequestBody ItemModel obj) throws Exception {
-      //  System.out.println("Textoo dirección mapper: " + obj.getNombre());
-        List<ItemModel> x = itemService.itemService(obj);
+    public List<ItemsModel> item(@RequestBody ItemsModel obj) throws Exception {
+      //  System.out.println("Texto dirección mapper: " + obj.getNombre());
+        List<ItemsModel> x = itemService.itemService(obj);
        
         
 //      if(x.size() > 0)
@@ -46,9 +46,9 @@ public class ItemController {
     @RequestMapping(value = "/allItems",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ItemModel> allItems(@RequestBody ItemModel obj) throws Exception {
+    public List<ItemsModel> allItems(@RequestBody ItemsModel obj) throws Exception {
       
-        List<ItemModel> x = itemService.AllItemService(obj);
+        List<ItemsModel> x = itemService.AllItemService(obj);
      
         return x;
     }
@@ -57,22 +57,22 @@ public class ItemController {
     @RequestMapping(value = "/itemNum",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ItemModel> itemNum(@RequestBody ItemModel obj) throws Exception {
+    public List<ItemsModel> itemNum(@RequestBody ItemsModel obj) throws Exception {
        
         
-        List<ItemModel> x = itemService.itemNum(obj);
+        List<ItemsModel> x = itemService.itemNum(obj);
      
         return x;
     }
     
     
         @ResponseBody
-        @RequestMapping(value = "/addItems",
+        @RequestMapping(value = "/insertItems",
                 method = RequestMethod.POST,
                 produces = MediaType.APPLICATION_JSON_VALUE)
-        public List<ItemModel> addItem(@RequestBody ItemModel obj) throws Exception {
+        public int insertItems(@RequestBody ItemsModel obj) throws Exception {
  
-            List<ItemModel> x = itemService.addItem(obj);
+            int x = itemService.insertItemsService(obj);
          
             return x;
         }

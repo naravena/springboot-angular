@@ -10,12 +10,35 @@ import java.util.List;
  */
 public interface ItemsMapper {
     
-    public List<ItemModel> itemMapper(ItemModel obj) throws Exception;
+    public List<ItemsModel> itemMapper(ItemsModel obj) throws Exception;
     
-    public List<ItemModel> allItemsMapper(ItemModel obj) throws Exception;
+    public List<ItemsModel> allItemsMapper(ItemsModel obj) throws Exception;
     
-     public List<ItemModel> itemNumMapper(ItemModel obj) throws Exception;
+     public List<ItemsModel> itemNumMapper(ItemsModel obj) throws Exception;
      
-     public List<ItemModel> addItemMapper (ItemModel obj) throws Exception;
+     
+     /**
+      * Añade un item a una lista de items
+      * @param obj
+      * @return
+      * @throws Exception
+      */
+     public int insertItemsMapper (ItemsModel obj) throws Exception;
+     
+     /**
+      * Elimina un item de una lista de items
+      * @param obj
+      * @return
+      * @throws Exception
+      */
+     public int deleteItemsMapper (ItemsModel obj) throws Exception;
+     
+     /**
+      * Actualiza un item de una lista de items.
+      * @param obj
+      * @return
+      * @throws Exception
+      */
+     public int updateItemsMapper (ItemsModel obj) throws Exception;
      
 }
