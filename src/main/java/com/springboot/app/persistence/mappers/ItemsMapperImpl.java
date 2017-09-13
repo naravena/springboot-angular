@@ -80,7 +80,7 @@ public class ItemsMapperImpl implements ItemsMapper {
 	@Override
 	public int insertItemsMapper(ItemsModel obj) throws Exception {
 		String sql = UtilStr
-				.removeSpaces(" INSERT INTO items " + " (nombre, " + "  descripcion, " + "  url) " + " VALUES " + " ('"
+				.removeSpacesAll(" INSERT INTO items " + " (nombre, " + "  descripcion, " + "  url) " + " VALUES " + " ('"
 						+ obj.getNombre() + "'" + " ,'" + obj.getDescripcion() + "'" + " ,'" + obj.getUrl() + "')");
 
 		return JdbcTemplate.update(sql);
@@ -88,7 +88,7 @@ public class ItemsMapperImpl implements ItemsMapper {
 
 	@Override
 	public int updateItemsMapper(ItemsModel obj) throws Exception {
-		String sql = UtilStr.removeSpaces(" UPDATE items     " + " SET nombre=     '" + obj.getNombre() + "'"
+		String sql = UtilStr.removeSpacesAll(" UPDATE items     " + " SET nombre=     '" + obj.getNombre() + "'"
 				+ "    ,descripcion='" + obj.getDescripcion() + "'" + "    ,url=        '" + obj.getUrl() + "'"
 				+ " WHERE id=        " + obj.getId());
 
@@ -97,7 +97,7 @@ public class ItemsMapperImpl implements ItemsMapper {
 
 	@Override
 	public int deleteItemsMapper(ItemsModel obj) throws Exception {
-		String sql = UtilStr.removeSpaces(" DELETE FROM items " + " WHERE id=         " + obj.getId());
+		String sql = UtilStr.removeSpacesAll(" DELETE FROM items " + " WHERE id=         " + obj.getId());
 
 		return JdbcTemplate.update(sql);
 	}

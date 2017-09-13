@@ -5,8 +5,12 @@ public class ItemsModel {
     private String nombre;
     private String descripcion;
     private String url;
+    
+    /**
+     * extra
+     */
     private String datoBuscador;
-
+    private int blnsql;
    
     //Getters y setters
     
