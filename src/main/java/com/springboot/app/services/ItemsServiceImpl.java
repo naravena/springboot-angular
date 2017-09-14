@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.springboot.app.persistence.mappers.ItemsMapper;
 import com.springboot.app.persistence.models.ItemsModel;
+import com.springboot.app.utils.UtilStr;
 
 /**
  * Servicios que recibira la clase Item.
@@ -40,21 +41,7 @@ public class ItemsServiceImpl implements ItemsService {
 
 		return list;
 
-		// List<ItemsModel> x = itemMapper.itemMapper(obj);
-		//
-		//
-		// for (int i = 0; i < x.size(); i++) {
-		// x.get(i).setNombre(x.get(i).getNombre().replaceAll("" + obj.getDatoBuscador()
-		// +
-		// "","<span class=\"sub\">" + obj.getDatoBuscador() + "</span>"));
-		// x.get(i).setDescripcion(x.get(i).getDescripcion().replaceAll("" +
-		// obj.getDatoBuscador() +
-		// "","<span class=\"sub\">" + obj.getDatoBuscador() + "</span>"));
-		//
-		// }
-		// System.out.println("Contenido de X.SIZE: " + x.size());
-		//
-		// return x;
+		
 
 	}
 
@@ -115,7 +102,8 @@ public class ItemsServiceImpl implements ItemsService {
 			
 			boolean boolNom = false;
 			boolean boolDesc = false;
-			
+			//String clase CSS
+			String redText = "redText";
 			// String que recoge los nombres originales.
 			String objOrigen = obj.getDatoBuscador();
 			String itemOrigen = item.getNombre();
@@ -125,43 +113,39 @@ public class ItemsServiceImpl implements ItemsService {
 			String itemOrigenDesc = item.getDescripcion();
 			
 			//Descripcion Normalizer
-			String objRepDesc = replaceChar(objOrigenDesc);
-			String itemRepDesc = replaceChar(itemOrigenDesc);
+			String objRepDesc = UtilStr.normalizerStr(objOrigenDesc);
+			String itemRepDesc = UtilStr.normalizerStr(itemOrigenDesc);
 			
 			
 			// String que recoge los nombres reemplazados (normaliza).
-			String objRep = replaceChar(objOrigen);
-			String itemRep = replaceChar(itemOrigen);		
+			String objRep = UtilStr.normalizerStr(objOrigen);
+			String itemRep = UtilStr.normalizerStr(itemOrigen);		
 		
 			
 			// Comprobar la busqueda con la base de datos
-			Matcher n = this.pattern(objOrigen).matcher(itemRep);
+			Matcher n = UtilStr.compare(objOrigen , itemRep);
 			
 			// Si encuentra nombre
 			if (n.find()) {
 				
 				itemOrigen = itemOrigen.substring(n.start(), n.end());
 				
-				item.setNombre(this.pattern(objOrigen)
-						.matcher(itemRep).replaceAll(this.patternReplaceHtml(itemOrigen)));
+				item.setNombre(UtilStr.patternCaseInsensitive(objOrigen)
+						.matcher(itemRep).replaceAll(UtilStr.spanHtml(itemOrigen , redText)));
 				
 				boolNom = true;
 			
 			}
 			
 			// Descripcion			
-			System.out.println("Contenido objOrigenDesc: " + objOrigenDesc);
-			System.out.println("Contenido objOrigenRepDesc: " + objRepDesc);
-			System.out.println("Contenido itemOrigenDesc: " + itemOrigenDesc);
-			System.out.println("Contenido itemRepDesc: " + itemRepDesc);
 			
-			Matcher d = this.pattern(objRepDesc).matcher(itemRepDesc);
+			Matcher d = UtilStr.compare(objRepDesc , itemRepDesc);
 			if(d.find()) {
 				
 				itemOrigenDesc = itemOrigenDesc.substring(d.start(), d.end());
 				
-				item.setDescripcion(this.pattern(objRepDesc)
-						.matcher(itemRepDesc).replaceAll(this.patternReplaceHtml(itemOrigenDesc)));
+				item.setDescripcion(UtilStr.patternCaseInsensitive(objRepDesc)
+						.matcher(itemRepDesc).replaceAll(UtilStr.spanHtml(itemOrigenDesc , redText)));
 			
 				boolDesc = true;
 			}	
@@ -173,86 +157,9 @@ public class ItemsServiceImpl implements ItemsService {
 
 		}
 
-		// Devuelve la cadena nueva
+	
 		return repList;
 	}
 
-	/**
-	 * METODO PARA REEMPLAZAR LA CADENA BUSCADA EN UN STRING.
-	 *
-	 * @param obj
-	 *            Cadena buscada.
-	 * @param item
-	 *            Cadena a procesar.
-	 *
-	 * @return Cadena reemplazada.
-	 */
-	private String replaceStr(String obj, String item) {
-		String replace = item;
-
-		obj = this.replaceChar(obj);
-		item = this.replaceChar(item);
-
-		Matcher x = this.pattern(obj).matcher(item);
-
-		if (x.find() && (obj.length() > 0)) {
-			replace = replace.substring(x.start(), x.end());
-			replace = this.pattern(obj).matcher(item).replaceAll(this.patternReplaceHtml(replace));
-		}
-
-		return replace;
-	}
-
-	/**
-	 * METODO PARA GENERAR UN PATRON.
-	 *
-	 * @param str
-	 *            Cadena a insertar en el patron de busqueda.
-	 *
-	 * @return Patron generado.
-	 */
-	private Pattern pattern(String str) {
-		return Pattern.compile("(?i)" + str.replaceAll("\\s", ""));
-	}
-
-	/**
-	 * METODO PARA REALIZAR UN REEMPLAZO DE UNA CADENA POR UN TAG HTML.
-	 *
-	 * @param str
-	 *            Cadena a insertar en el tag.
-	 *
-	 * @return tag generado en html.
-	 */
-	private String patternReplaceHtml(String str) {
-		return "<span class=\"sub\">" + str + "</span>";
-	}
-
-	/**
-	 * CONVERSION DEL TEXTO A SU FORMA CANONICAL DECOMPOSITION, REPRESENTANDO LOS
-	 * CARACTERES UTF-8 COMPRENDIDOS ENTRE U+0300 HASTA U+036F.
-	 * ------------------------------------
-	 * <p>
-	 * "[^\\p{ASCII}]"
-	 * <p>
-	 * "[\\p{InCombiningDiacriticalMarks}]"
-	 *
-	 * -------------------------------------
-	 *
-	 *
-	 * @param str
-	 *            Cadena a procesar.
-	 *
-	 * @return Cadena convertida a UTF-8.
-	 */
-	private String replaceChar(String str) {
-		String normalize = str.replace("ñ", "\001");
-
-		normalize = Normalizer.normalize(normalize, Normalizer.Form.NFD);
-		normalize = normalize.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
-
-		normalize = normalize.replace("\001", "ñ");
-
-		return normalize;
-	}
 
 }

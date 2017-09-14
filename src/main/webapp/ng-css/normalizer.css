@@ -760,7 +760,7 @@ CONTENEDOR BTN
 TEXTO SUBRAYADO EN EL BUSCADOR, CLASE SUB
 */
 
-.sub{
+.redText{
     color: red;
     font-size: 14px;
 }

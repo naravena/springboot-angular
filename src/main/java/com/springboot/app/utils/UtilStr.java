@@ -117,6 +117,23 @@ public class UtilStr {
 	    return normalize;
 	  }
 
+	  
+	  
+	  /**
+	   * METODO PARA COMPARAR DOS STRINGS
+	   * @param ojb parametros a comparar
+	   * @param item parametros a comparar
+	   * @return bln
+	   */
+	  public static Matcher compare(String ojb, String item) {
+		return  patternCaseInsensitive(ojb).matcher(item);
+			
+		}
+	  
+	  
+	  
+	  
+	  
 	}
 	
 
