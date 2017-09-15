@@ -13,9 +13,9 @@ import com.springboot.app.persistence.mappers.ItemsMapper;
 import com.springboot.app.persistence.models.ItemsModel;
 import com.springboot.app.utils.UtilStr;
 
-/**
- * Servicios que recibira la clase Item.
- * 
+/****************************************
+ * Servicios que recibira la clase Item *
+ * **************************************
  * @author Lenovo
  */
 @Service
@@ -24,10 +24,10 @@ public class ItemsServiceImpl implements ItemsService {
 	@Autowired
 	ItemsMapper itemMapper;
 
-	/**
+	/*******************************************************************************
 	 * Servicio que recibe una lista de objetos de ItemModel, y devuelve una copia
 	 * usando el mapper.
-	 * 
+	 * *****************************************************************************
 	 * @param obj
 	 * @return
 	 * @throws Exception
@@ -40,13 +40,11 @@ public class ItemsServiceImpl implements ItemsService {
 		List<ItemsModel> list = this.replaceSearch(obj, listaItems);
 
 		return list;
-
-		
-
 	}
 
-	/**
-	 * Servicio que devuelve un array de items por defecto
+	/***************************************************************************
+	 * Servicio que devuelve todos los objetos Items dentro de la tabla Items  *
+	 * *************************************************************************
 	 * 
 	 * @param obj
 	 * @return
@@ -55,12 +53,18 @@ public class ItemsServiceImpl implements ItemsService {
 	@Override
 	public List<ItemsModel> AllItemService(ItemsModel obj) throws Exception {
 
-		List<ItemsModel> x = itemMapper.allItemsMapper(obj);
-		return x;
-	}
 
-	/**
-	 * Servicio que recibe un objeto numerico
+		List<ItemsModel> allItems = itemMapper.allItemsMapper(obj);
+	
+		//List<ItemsModel> list = this.fileSearch(obj, allItems);
+		
+		return allItems;	
+	}
+	
+
+	/*********************************************************************
+	 * Servicio que recibe un objeto numerico y devuelve la tabla vacía  *
+	 * *******************************************************************
 	 * 
 	 * @param obj
 	 * @return
@@ -73,14 +77,28 @@ public class ItemsServiceImpl implements ItemsService {
 		return x;
 	}
 
-	/**
-	 * Servicio que inserta un item en la tabla items
+	/*******************************************************************
+	 * Servicio que inserta uno o varios ItemsModel en la tabla Items  *
+	 * *****************************************************************
+	 * 
+	 * @param List<ItemsModel> items a añadir
+	 * return int
 	 */
 	@Override
-	public int insertItemsService(ItemsModel obj) throws Exception {
-		int x = itemMapper.insertItemsMapper(obj);
-		return x;
+	public int insertItemsService (List<ItemsModel> listaItems) throws Exception {
+		System.out.println("\n --------------\nEntra en insertItemsService\n --------------\n");
+		int x= 0;
+		int cont = x;
+		for (ItemsModel items : listaItems) {
+			 x = itemMapper.insertItemsMapper(items);	
+			 cont++;
+		}
+		
+		System.out.println("Datos Insertados: " + cont);
+		return x;	
 	}
+	
+
 
 	/**
 	 * METODO PARA REEMPLAZAR LA CADENA BUSCADA EN UNA LISTA DE ITEMS.
@@ -133,8 +151,7 @@ public class ItemsServiceImpl implements ItemsService {
 				item.setNombre(UtilStr.patternCaseInsensitive(objOrigen)
 						.matcher(itemRep).replaceAll(UtilStr.spanHtml(itemOrigen , redText)));
 				
-				boolNom = true;
-			
+				boolNom = true;		
 			}
 			
 			// Descripcion			
@@ -153,13 +170,28 @@ public class ItemsServiceImpl implements ItemsService {
 			if(boolNom || boolDesc) {
 				repList.add(item);		
 			}
-			
-
 		}
 
 	
 		return repList;
 	}
-
-
 }
+
+
+//**PRUEBA**//
+//private List<ItemsModel> fileSearch (ItemsModel obj, List<ItemsModel> allItems){
+//	
+//	ItemsModel i = new ItemsModel();
+//	i.setNombre("pipo");
+//	i.setDescripcion("p");
+//	i.setUrl("p");
+//	allItems.add(i);
+//	int cont = 0;
+//	for (int j = 0; j < allItems.size(); j++) {
+//		cont ++;
+//	}
+//
+//	System.out.println("Numero de items en lista:" + cont);
+//	
+//	return allItems;
+//} 

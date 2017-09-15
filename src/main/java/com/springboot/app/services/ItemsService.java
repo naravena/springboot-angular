@@ -28,7 +28,7 @@ public interface ItemsService {
      * @return
      * @throws Exception
      */
-    public int insertItemsService (ItemsModel obj) throws Exception;
+    public int insertItemsService (List<ItemsModel> obj) throws Exception;
     
     
     
