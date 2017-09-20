@@ -630,7 +630,7 @@ td, th{
     text-align: center;	
 }
 
-#tablaBbdd #tablaBbddCabecera h1{
+#tablaBbdd #tablaBbddCabecera h1, span{
     color: white;
     font-size: 14px;
     text-transform: uppercase;

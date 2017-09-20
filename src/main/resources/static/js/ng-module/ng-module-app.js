@@ -20,10 +20,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider,
                     templateUrl: GBL_COFG.urlTemplate('home.html'),
                    
                 })
-                .when('/pagina1',
+                .when('/edit',
                 {
-                    templateUrl: GBL_COFG.urlTemplate('pagina1.html'),
-                    controller: 'ng-app-controller-template1'
+                    templateUrl: GBL_COFG.urlTemplate('edit.html'),
+                    controller: 'ng-app-controller-edit'
                 })
 
                 .when('/pagina2',

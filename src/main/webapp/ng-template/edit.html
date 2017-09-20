@@ -1,0 +1,22 @@
+
+
+<div id="tablaBbdd">
+    
+    <form id="tablaBbddCabecera" ng-repeat="x in datos">
+	<span ng-repeat="(key,value) in x">{{value}}</span>		
+     </form>
+	
+	<select ng-model="ItemsModel">
+	<option ng-repeat="x in datos" value="{{x.table}}">{{x.table}}</option>
+	</select>
+
+<h1>Seleccionado: {{ItemsModel}}</h1>
+
+ </div>
+
+<div class="centrar">
+  <button class="btn" ng-click="bbdd()" ng-show="!mostrar">Hazme click!</button>
+</div>
+
+<!-- <input ng-repeat="(key, value) in x" name="{{key}}"value="{{value}}" > -->
+

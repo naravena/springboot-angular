@@ -40,25 +40,25 @@ public class ItemController {
 	@RequestMapping(value = "/allItems", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<ItemsModel> allItems(@RequestBody ItemsModel obj) throws Exception {
 		System.out.println("\n --------------\nEntra en el controlador\n --------------\n");
-		//List<ItemsModel> x = itemService.AllItemService(obj);
+		List<ItemsModel> x = itemService.AllItemService(obj);
 		
-		ItemsModel i = new ItemsModel();
-		i.setNombre("pipo");
-		i.setDescripcion("p");
-		i.setUrl("p");
-
-		ItemsModel p = new ItemsModel();
-		p.setNombre("iojoij");
-		p.setDescripcion("pioj");
-		p.setUrl("pij");
-
-		List<ItemsModel> list = new ArrayList<>();
-		list.add(i);
-		list.add(p);
-
-		int x = itemService.insertItemsService(list);
+//		ItemsModel i = new ItemsModel();
+//		i.setNombre("pipo");
+//		i.setDescripcion("p");
+//		i.setUrl("p");
+//
+//		ItemsModel p = new ItemsModel();
+//		p.setNombre("iojoij");
+//		p.setDescripcion("pioj");
+//		p.setUrl("pij");
+//
+//		List<ItemsModel> list = new ArrayList<>();
+//		list.add(i);
+//		list.add(p);
+//
+//		int x = itemService.insertItemsService(list);
 		
-		return null;
+		return x;
 	}
 	/**
 	 * Controlador que recibe un numero y devuelve la lista vacía.
