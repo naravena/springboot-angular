@@ -3,20 +3,37 @@
 <div id="tablaBbdd">
     
     <form id="tablaBbddCabecera" ng-repeat="x in datos">
-	<span ng-repeat="(key,value) in x">{{value}}</span>		
-     </form>
-	
-	<select ng-model="ItemsModel">
-	<option ng-repeat="x in datos" value="{{x.table}}">{{x.table}}</option>
-	</select>
+	<span ng-repeat="(key,value) in x">{{value}}</span>	
+    </form>
+     
 
-<h1>Seleccionado: {{ItemsModel}}</h1>
+<button class="btn" ng-click="editbbdd()" ng-show="!editButton" >Edit</button> 
+
+<!-- <select ng-model="TestModel" ng-options="value.table for value in table" id="tablaSeleccionada" > -->
+<!--   <option ng-repeat="x in datos" value="{{x}}"></option> -->
+<!-- </select> -->
+
+<select  id="tablaBuscador"> 
+	
+<option ng-repeat="x in datos" value="{{x.table}}">{{x.table}}</option>
+	
+</select>
+
+
+
+<h1>Seleccionado: {{TestModel.table}}</h1>
 
  </div>
 
 <div class="centrar">
+ 
   <button class="btn" ng-click="bbdd()" ng-show="!mostrar">Hazme click!</button>
 </div>
 
 <!-- <input ng-repeat="(key, value) in x" name="{{key}}"value="{{value}}" > -->
 
+<!-- <select ng-model="tableName"> 
+	
+	<option ng-repeat="x in datos" name="{{x.table}}" value="{{x.table}}">{{x.table}}</option>
+	
+<!-- 	</select> -->

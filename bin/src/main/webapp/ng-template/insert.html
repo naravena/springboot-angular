@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario</title>
+</head>
+<body>
+
+	<div id="contedor">
+		<form>
+			<input type="text" name="nombre" value="input1-0"> 
+			<input	type="text" name="descripcion" value="input1-1"> 
+			<input	type="checkbox" name="check" checked>
+
+		</form>
+		<form>
+			<input type="text" name="nombre" value="input2-0"> 
+			<input	type="text" name="descripcion" value="input2-1"> 
+			<input	type="checkbox" name="check" checked>
+		</form>
+
+		<input type="button" value="SEND">
+	</div>
+
+	<script type="text/javascript">
+		(function() {
+			
+			var forms = document.forms;
+			
+			for(var item in forms){
+				console.log(forms + "" + form[forms]);
+			}
+			for (var i = 0, max = forms.length; i< max; i++)
+				{
+				console.log(forms[i]);
+				}
+			
+			
+
+		});
+	</script>
+
+
+
+
+
+</body>
+</html>

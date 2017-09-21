@@ -1,10 +1,17 @@
 app.controller('ng-app-controller-edit', ['$scope', '$http', 'serviceBD', function ($scope,
             $http, serviceBD)
     {
+	
+	var tablaBuscador = document.querySelector('#tablaBuscador');
+	
+	//Esconder botton editar
+	$scope.editButton = true;
+    
+	console.log("Contenido tabla buscador:" + tablaBuscador);
 	 //Peticion ajax, nombre del controlador test, + el objeto
-    $http.post('/edit',
+    $http.post('/getTableName',
             {
-                tablaBuscador: 'tablaBuscador'
+                tablaBuscador: tablaBuscador.value
             })
             //Respuesta, siempre es response.data
             .then(function (response)
@@ -13,24 +20,47 @@ app.controller('ng-app-controller-edit', ['$scope', '$http', 'serviceBD', functi
 
                // $scope.mensaje = JSON.stringify(response.data);
                 var datos = (response.data);
+                
     $scope.bbdd = function () {
+    	
                 //Esconde botón
                $scope.mostrar = true;
+               //Muestra edit
+               $scope.editButton = false;
+               
                
                //Recorre la base de datos, devuelve el nombre de las tablas.
                 for (var i = 0, max = datos.length; i < max; i++) {
                     $scope.mensaje = (datos[i].table);
                     $scope.datos = datos;
                 }
-                $scope.table = response.data;
-                
+                $scope.table = response.data;  
                 serviceBD.setTestModel(serviceBD.getTestModel()+1);
-                
-                
-                
-                
-                
+            
                 };
 
             });
+    
+    /**
+     * Peticion ajax, que envia un string, que es el nombre de la tabla elegida, 
+     * y devuelve los contenidos de esa tabla.
+     */
+    $scope.editbbdd = function () {
+    	
+    	
+    	$http.post('/getAllItemsFromTable',
+                {
+                    tablaBuscador: tablaBuscador.value
+                })
+                //Respuesta, siempre es response.data
+                .then(function (response)
+                {
+                  
+                    var datos = (response.data);
+                    console.log(datos)
+                    console.log(tablaBuscador)
+                });    			
+    		};
+    		
+    
     }]);
