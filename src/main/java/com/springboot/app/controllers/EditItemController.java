@@ -1,6 +1,7 @@
 package com.springboot.app.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -48,9 +49,9 @@ public class EditItemController {
 	   */
 	  @ResponseBody
 		@RequestMapping(value = "/getAllItemsFromTable", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-		public List<ItemsModel> getAllItems(@RequestBody String tablaBuscador) throws Exception {
+		public List<Map<String, Object>> getAllItems(@RequestBody TestModel tablaBuscador) throws Exception {
 			System.out.println("\n --------------\nEntra en el controlador\n --------------\n");
-			List<ItemsModel> x = editItemService.getAllItemsFromTable(tablaBuscador);
+			List<Map<String, Object>> x = editItemService.getAllItemsFromTable(tablaBuscador);
 			
 	
 			return x;

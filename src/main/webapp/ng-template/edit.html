@@ -1,34 +1,52 @@
 
 
-<div id="tablaBbdd">
-    
-    <form id="tablaBbddCabecera" ng-repeat="x in datos">
-	<span ng-repeat="(key,value) in x">{{value}}</span>	
-    </form>
-     
 
-<button class="btn" ng-click="editbbdd()" ng-show="!editButton" >Edit</button> 
+    
+<!--     <form id="tablaBbddCabecera" ng-repeat="x in datos"> -->
+<!-- 	<span ng-repeat="(key,value) in x">{{value}}</span>	 -->
+<!--     </form> -->
+     
+    
+
+
 
 <!-- <select ng-model="TestModel" ng-options="value.table for value in table" id="tablaSeleccionada" > -->
 <!--   <option ng-repeat="x in datos" value="{{x}}"></option> -->
 <!-- </select> -->
-
-<select  id="tablaBuscador"> 
 	
-<option ng-repeat="x in datos" value="{{x.table}}">{{x.table}}</option>
-	
-</select>
 
-
-
-<h1>Seleccionado: {{TestModel.table}}</h1>
-
- </div>
 
 <div class="centrar">
- 
+
+ <select  id="tablaBuscador" class="select" ng-show="!editButton"> 	
+		<option ng-repeat="x in datos" value="{{x.table}}" id="option" >{{x.table}}</option>	
+</select>
+
+  <button class="btn" ng-click="editbbdd()" ng-show="!editButton" >Edit</button> 
   <button class="btn" ng-click="bbdd()" ng-show="!mostrar">Hazme click!</button>
 </div>
+
+ 
+
+ <div class="tablaBbdd">
+	   <form ng-repeat="(key, value) in items track by $index">
+      <fieldset>
+        <input type="checkbox" />
+      </fieldset>
+      <fieldset ng-repeat="(n, v) in value">
+        <legend>{{n}}</legend>
+        <input type="text" name="{{n}}" value="{{v}}" placeholder="{{n}}" ng-readonly="'{{n}}'=== 'id'"/>
+      </fieldset>
+    </form>
+    </div>
+
+
+
+
+
+
+
+
 
 <!-- <input ng-repeat="(key, value) in x" name="{{key}}"value="{{value}}" > -->
 
@@ -37,3 +55,19 @@
 	<option ng-repeat="x in datos" name="{{x.table}}" value="{{x.table}}">{{x.table}}</option>
 	
 <!-- 	</select> -->
+
+
+
+<!--  <div class="tablaBbdd"> -->
+<!-- 	   <form ng-repeat="(key, value) in items track by $index"> -->
+<!--       <fieldset> -->
+<!--         <input type="checkbox" /> -->
+<!--       </fieldset> -->
+<!--       <fieldset ng-repeat="(n, v) in value"> -->
+<!--         <legend>{{n}}</legend> -->
+<!--         <input type="text" name="{{n}}" value="{{v}}" placeholder="{{n}}" ng-readonly="'{{n}}'=== 'id'"/> -->
+<!--       </fieldset> -->
+<!--     </form> -->
+<!--     </div> -->
+
+

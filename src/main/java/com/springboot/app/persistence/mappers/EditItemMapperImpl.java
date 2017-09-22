@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -104,14 +105,17 @@ public class EditItemMapperImpl implements EditItemMapper{
 		    return data.getColumns(null, null, table, null);
 		  }
 
-
+		  /**
+		   * Devuelve todo el contenido de una tabla dada recogida por el SELECT de la vista.
+		   * Recoge una tabla TestModel (table) y devuelve un ListMap con el contenido de la tabla.
+		   */
 		@Override
-		public List<ItemsModel> getAllItemsFromTable(String tablaBuscador) throws Exception {
+		public List<Map<String, Object>> getAllItemsFromTable(TestModel tablaBuscador) throws Exception {
 
 			
-			String sql = "SELECT * FROM " + tablaBuscador;
+			String sql = "SELECT * FROM " + tablaBuscador.getTable();
 			System.out.println(sql);
-			return JdbcTemplate.query(sql, new BeanPropertyRowMapper(ItemsModel.class));
+			return JdbcTemplate.queryForList(sql);
 			
 		}
 	}

@@ -34,7 +34,7 @@ app.controller('ng-app-controller-edit', ['$scope', '$http', 'serviceBD', functi
                     $scope.mensaje = (datos[i].table);
                     $scope.datos = datos;
                 }
-                $scope.table = response.data;  
+                $scope.data = response.data;  
                 serviceBD.setTestModel(serviceBD.getTestModel()+1);
             
                 };
@@ -50,14 +50,13 @@ app.controller('ng-app-controller-edit', ['$scope', '$http', 'serviceBD', functi
     	
     	$http.post('/getAllItemsFromTable',
                 {
-                    tablaBuscador: tablaBuscador.value
+                    table: tablaBuscador.value
                 })
-                //Respuesta, siempre es response.data
                 .then(function (response)
-                {
-                  
-                    var datos = (response.data);
-                    console.log(datos)
+                {  
+                    var items = (response.data);
+                    $scope.items = items;
+                    console.log("CONTENIDO DE ITEMS:" + JSON.stringify(items))
                     console.log(tablaBuscador)
                 });    			
     		};

@@ -756,11 +756,65 @@ CONTENEDOR BTN
 }
 
 
-/*
-TEXTO SUBRAYADO EN EL BUSCADOR, CLASE SUB
+/********************************************
+*
+* TEXTO SUBRAYADO EN EL BUSCADOR, CLASE SUB
+*
+*********************************************
 */
 
 .redText{
     color: red;
     font-size: 14px;
+}
+
+
+/********************************************
+*
+* MENU SELECT STYLE
+*
+*********************************************
+*/
+
+#tablaBuscador{
+	margin: 10px;
+}
+.select{
+    border: solid 2px white;
+    background-color: rgba(255,255,255,.2);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: white;
+}
+#option {
+	color: white;
+	background-color: #4ca2cd;
+	text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; 
+     border: solid 2px white;  
+}
+
+/********************************************
+*
+* FORMULARIO
+*
+*********************************************
+*/
+
+#form {
+    background-color: rgba(255,255,255,.2);
+   position: absolute;
+    width: 80%;
+    top: 40%;
+    left: 12%;
+    margin: 10px auto;
+    padding: 5px;    
+    text-align: left;
+    
+
 }

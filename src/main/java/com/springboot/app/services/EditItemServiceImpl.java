@@ -1,6 +1,7 @@
 package com.springboot.app.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,8 @@ public class EditItemServiceImpl implements EditItemService{
 	}
 
 	@Override
-	public List<ItemsModel> getAllItemsFromTable(String tablaBuscador) throws Exception {
-		List<ItemsModel> x = editItemMapper.getAllItemsFromTable(tablaBuscador);
+	public List<Map<String, Object>> getAllItemsFromTable(TestModel tablaBuscador) throws Exception {
+		List<Map<String, Object>> x = editItemMapper.getAllItemsFromTable(tablaBuscador);
 		return x;
 	}
 
