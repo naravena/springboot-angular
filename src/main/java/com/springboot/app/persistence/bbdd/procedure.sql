@@ -2,7 +2,7 @@
 DELIMITER $$
 
 /*Crea el procedimiento, llamado agregar_proveedor, que recibe dos valores: nombre y ciudad*/
-CREATE PROCEDURE agregar_proveedor()
+CREATE PROCEDURE agregar_pieza()
 
 /*Inicia el procedimiento*/
 BEGIN
